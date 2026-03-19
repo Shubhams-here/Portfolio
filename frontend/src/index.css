@@ -2,33 +2,39 @@
    Portfolio Styles
    ========================================================================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 /* --- Variables & Theming --- */
 :root {
     /* Light Mode Variables */
-    --bg-color: #ffffff;
-    --text-color: #1e293b;
+    --bg-color: #fafafa;
+    --text-color: #0f172a;
     --text-muted: #64748b;
-    --primary-color: #2563eb;      /* Professional Royal Blue */
-    --secondary-color: #1e40af;    /* Deep Blue */
-    --accent-color: #3b82f6;       /* Lighter Blue Accent */
-    --glass-bg: rgba(255, 255, 255, 0.95);
-    --glass-border: rgba(0, 0, 0, 0.05);
-    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    --border-radius: 12px;
-    --transition: 0.3s ease;
+    --primary-color: #000000;
+    --secondary-color: #333333;
+    --accent-color: #2563eb; /* Blue accent for visibility */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-border-glow: rgba(0, 0, 0, 0.15);
+    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.1);
+    --border-radius: 24px;
+    --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     --font-main: 'Inter', sans-serif;
 }
 
 [data-theme="dark"] {
-    --bg-color: #0f172a;           /* Deep dark slate */
-    --text-color: #f1f5f9;
+    --bg-color: #050505;
+    --text-color: #f8fafc;
     --text-muted: #94a3b8;
-    --primary-color: #3b82f6;      /* Bright Blue */
-    --secondary-color: #2563eb;    /* Royal Blue */
-    --accent-color: #60a5fa;       /* Light Blue */
-    --glass-bg: rgba(15, 23, 42, 0.85);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --primary-color: #ffffff;
+    --secondary-color: #e2e8f0;
+    --accent-color: #60a5fa; /* Light blue accent for crisp contrast against black */
+    --glass-bg: rgba(20, 20, 20, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-border-glow: rgba(255, 255, 255, 0.25);
+    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --card-shadow-hover: 0 16px 48px rgba(255, 255, 255, 0.05);
 }
 
 /* --- Global Resets --- */
@@ -93,21 +99,34 @@ img {
 
 .glass-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border: 1px solid var(--glass-border);
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow var(--transition);
+    transition: transform var(--transition), box-shadow var(--transition), border var(--transition);
+    overflow: hidden;
 }
 
 .glass-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--glass-border-glow);
 }
 
-[data-theme="dark"] .glass-card:hover {
-    box-shadow: 0 15px 45px rgba(0,0,0,0.6);
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--glass-border-glow);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
 }
 
 /* Section Titles */
@@ -143,8 +162,8 @@ img {
 
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    color: var(--bg-color);
+    box-shadow: 0 4px 15px rgba(128, 128, 128, 0.4);
 }
 
 .btn-primary:hover {
@@ -308,10 +327,17 @@ img {
     top: 70px;
     left: 0;
     width: 100%;
-    height: 0;
     overflow: hidden;
-    transition: height 0.4s ease;
     z-index: 999;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+    }
+    .nav-links {
+        display: none !important;
+    }
 }
 
 @media (min-width: 769px) {
@@ -414,7 +440,7 @@ img {
 }
 
 .greeting {
-    font-size: 1.2rem;
+    font-size: 2.2rem;
     font-weight: 600;
     color: var(--accent-color);
     margin-bottom: 1rem;
@@ -615,7 +641,7 @@ img {
 
 .tag:hover {
     background: var(--primary-color);
-    color: white;
+    color: var(--bg-color);
     transform: translateY(-2px);
 }
 
@@ -673,7 +699,7 @@ img {
 .overlay-btn {
     padding: 0.8rem 2rem;
     background: var(--primary-color);
-    color: white;
+    color: var(--bg-color);
     border-radius: 30px;
     font-weight: 600;
     transform: translateY(20px);

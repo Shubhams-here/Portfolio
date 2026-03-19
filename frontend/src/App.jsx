@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AnimatedBackground from './components/AnimatedBackground';
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -49,6 +50,7 @@ function App() {
 
   return (
     <>
+      <AnimatedBackground theme={theme} />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
       <About />
