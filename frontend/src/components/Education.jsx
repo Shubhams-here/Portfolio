@@ -73,32 +73,36 @@ const Education = () => {
                         </motion.div>
 
                         <div className="certifications-grid" style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
-                            <motion.div variants={fadeUp} className="cert-card glass-card" style={{ padding: '1.5rem' }} whileHover={{ y: -5 }}>
+                            <motion.div variants={fadeUp} className="cert-card glass-card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column' }} whileHover={{ y: -5 }}>
                                 <Award size={28} style={{ color: 'var(--primary-color)', marginBottom: '1rem' }} />
                                 <p style={{ fontWeight: 600 }}>Computational Theory & Automata</p>
                                 <span style={{ color: 'var(--accent-color)', fontSize: '0.9rem' }}>Infosys</span>
-                                <div style={{ fontSize: '0.85rem', marginTop: '0.8rem', opacity: 0.8 }}>Covered automata theory, formal languages, and computability.</div>
+                                <div style={{ fontSize: '0.85rem', marginTop: '0.8rem', opacity: 0.8, flexGrow: 1 }}>Covered automata theory, formal languages, and computability.</div>
+                                <a href="https://drive.google.com/file/d/1mq6zr59k2WUlcOXCk9BLaEbCkBZ8GcJr/view" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '1rem', color: 'var(--primary-color)', fontSize: '0.9rem', textDecoration: 'none', fontWeight: 600 }}>View Certificate &rarr;</a>
                             </motion.div>
                             
-                            <motion.div variants={fadeUp} className="cert-card glass-card" style={{ padding: '1.5rem' }} whileHover={{ y: -5 }}>
+                            <motion.div variants={fadeUp} className="cert-card glass-card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column' }} whileHover={{ y: -5 }}>
                                 <Award size={28} style={{ color: 'var(--primary-color)', marginBottom: '1rem' }} />
                                 <p style={{ fontWeight: 600 }}>ChatGPT Prompt Engineering</p>
                                 <span style={{ color: 'var(--accent-color)', fontSize: '0.9rem' }}>Infosys</span>
-                                <div style={{ fontSize: '0.85rem', marginTop: '0.8rem', opacity: 0.8 }}>Learned to craft effective prompts for AI models.</div>
+                                <div style={{ fontSize: '0.85rem', marginTop: '0.8rem', opacity: 0.8, flexGrow: 1 }}>Learned to craft effective prompts for AI models.</div>
+                                <a href="https://drive.google.com/file/d/1Lfyvmxl9u8cNXyC3pf-Ft03UTGtxAU27/view" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '1rem', color: 'var(--primary-color)', fontSize: '0.9rem', textDecoration: 'none', fontWeight: 600 }}>View Certificate &rarr;</a>
                             </motion.div>
 
-                            <motion.div variants={fadeUp} className="cert-card glass-card" style={{ padding: '1.5rem' }} whileHover={{ y: -5 }}>
+                            <motion.div variants={fadeUp} className="cert-card glass-card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column' }} whileHover={{ y: -5 }}>
                                 <Cloud size={28} style={{ color: 'var(--primary-color)', marginBottom: '1rem' }} />
                                 <p style={{ fontWeight: 600 }}>Cloud Computing</p>
                                 <span style={{ color: 'var(--accent-color)', fontSize: '0.9rem' }}>NPTEL</span>
-                                <div style={{ fontSize: '0.85rem', marginTop: '0.8rem', opacity: 0.8 }}>Understood cloud architecture and deployment models.</div>
+                                <div style={{ fontSize: '0.85rem', marginTop: '0.8rem', opacity: 0.8, flexGrow: 1 }}>Understood cloud architecture and deployment models.</div>
+                                <a href="https://drive.google.com/file/d/1tLqNPJM4bhalTjv3KFMCqOcKV8L7q_Tf/view" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '1rem', color: 'var(--primary-color)', fontSize: '0.9rem', textDecoration: 'none', fontWeight: 600 }}>View Certificate &rarr;</a>
                             </motion.div>
 
-                            <motion.div variants={fadeUp} className="cert-card glass-card" style={{ padding: '1.5rem' }} whileHover={{ y: -5 }}>
+                            <motion.div variants={fadeUp} className="cert-card glass-card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column' }} whileHover={{ y: -5 }}>
                                 <Network size={28} style={{ color: 'var(--primary-color)', marginBottom: '1rem' }} />
                                 <p style={{ fontWeight: 600 }}>P2P Protocols and LANs</p>
                                 <span style={{ color: 'var(--accent-color)', fontSize: '0.9rem' }}>Coursera</span>
-                                <div style={{ fontSize: '0.85rem', marginTop: '0.8rem', opacity: 0.8 }}>Studied network topologies, LAN protocols, and P2P.</div>
+                                <div style={{ fontSize: '0.85rem', marginTop: '0.8rem', opacity: 0.8, flexGrow: 1 }}>Studied network topologies, LAN protocols, and P2P.</div>
+                                <a href="https://drive.google.com/file/d/1OcmFKBhfMje7q2Kt7heN3k3YynsxJk2z/view" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '1rem', color: 'var(--primary-color)', fontSize: '0.9rem', textDecoration: 'none', fontWeight: 600 }}>View Certificate &rarr;</a>
                             </motion.div>
                         </div>
                     </motion.div>
