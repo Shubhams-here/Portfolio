@@ -240,6 +240,9 @@ img {
     padding: 0.8rem 0;
     border-bottom: 1px solid var(--glass-border);
     box-shadow: var(--card-shadow);
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 .nav-content {
