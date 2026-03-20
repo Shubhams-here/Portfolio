@@ -13,15 +13,15 @@ const Footer = () => {
                 <div className="footer-socials" style={{ display: 'flex', gap: '1.5rem' }}>
                     <motion.a 
                         href="https://github.com/shubhams-here" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-                        whileHover={{ y: -5, color: 'var(--primary-color)' }}
-                        style={{ color: 'var(--text-muted)', transition: 'color 0.3s' }}
+                        whileHover={{ y: -5, scale: 1.1 }}
+                        style={{ color: 'var(--primary-color)', transition: 'transform 0.3s' }}
                     >
                         <Github size={28} />
                     </motion.a>
                     <motion.a 
                         href="https://www.linkedin.com/in/shubham69" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-                        whileHover={{ y: -5, color: 'var(--primary-color)' }}
-                        style={{ color: 'var(--text-muted)', transition: 'color 0.3s' }}
+                        whileHover={{ y: -5, scale: 1.1 }}
+                        style={{ color: 'var(--accent-color)', transition: 'transform 0.3s' }}
                     >
                         <Linkedin size={28} />
                     </motion.a>

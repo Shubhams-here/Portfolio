@@ -50,9 +50,9 @@ const Hero = () => {
                     </motion.div>
                     
                     <motion.div variants={fadeInUp} className="social-links">
-                        <a href="https://github.com/shubhams-here" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={26} strokeWidth={1.5} /></a>
-                        <a href="https://www.linkedin.com/in/shubham69" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={26} strokeWidth={1.5} /></a>
-                        <a href="mailto:shubhamsinghrajput7809@gmail.com" aria-label="Email"><Mail size={26} strokeWidth={1.5} /></a>
+                        <a href="https://github.com/shubhams-here" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={26} strokeWidth={1.5} color="var(--primary-color)" /></a>
+                        <a href="https://www.linkedin.com/in/shubham69" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={26} strokeWidth={1.5} color="var(--accent-color)" /></a>
+                        <a href="mailto:shubhamsinghrajput7809@gmail.com" aria-label="Email"><Mail size={26} strokeWidth={1.5} color="#ea4335" /></a>
                     </motion.div>
                 </motion.div>
                 
