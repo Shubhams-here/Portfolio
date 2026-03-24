@@ -1,0 +1,58 @@
+--- PROJECT STRUCTURE ---
+Portfolio/
+|-- README.md
+|-- backend/
+|   |-- .gitignore
+|   |-- package-lock.json
+|   |-- package.json
+|   |-- server.js
+|   |-- models/
+|   |-- node_modules/
+|-- frontend/
+|   |-- .gitignore
+|   |-- eslint.config.js
+|   |-- index.html
+|   |-- package-lock.json
+|   |-- package.json
+|   |-- vite.config.js
+|   |-- public/
+|   |-- src/
+|   |-- node_modules/
+|-- legacy/
+|   |-- index.html
+|   |-- assets/
+|   |-- css/
+|   |-- js/
+
+--- PROJECT TYPE ---
+Multi-Project Repository (Monorepo)
+- React (Vite) in frontend/
+- Node.js backend in backend/
+- Static HTML/JS in legacy/
+
+--- IMPORTANT FILES ---
+index.html: frontend/index.html (Also found: legacy/index.html)
+package.json: frontend/package.json (Also found: backend/package.json)
+
+--- BUILD DETAILS ---
+Build Command: npm run build (Runs `vite build` inside frontend/package.json)
+Output Directory: dist (Default for Vite builds)
+
+--- VERCEL SETTINGS ---
+Root Directory: frontend
+Build Command: npm run build
+Output Directory: dist
+
+--- ISSUES FOUND ---
+- The project is structured with subdirectories (`frontend` and `backend`), meaning Vercel will fail to build if deployed directly from the git root directory.
+- Vercel looks for a package.json and index.html in the root directory by default, which are completely NOT FOUND in the root.
+- The `legacy` folder contains a separate index.html, which might misguide auto-detection tools if the root directory is not explicitly set.
+
+--- FINAL RECOMMENDATION ---
+To display the React Vite portfolio correctly on Vercel, youMUST configure your Vercel project with the exact following settings during the import process:
+- Root Directory: frontend
+- Framework Preset: Vite (Vercel overrides this automatically if it detects Vite)
+- Build Command: npm run build
+- Output Directory: dist
+
+Make sure to select the `frontend` directory by clicking "Edit" next to "Root Directory" before you hit "Deploy."
