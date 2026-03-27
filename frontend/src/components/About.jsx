@@ -2,6 +2,16 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const About = () => {
+    const fadeUp = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+    };
+
+    const stagger = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+    };
+
     return (
         <section className="about section" id="about" style={{ position: 'relative', zIndex: 1 }}>
             {/* Background glowing blob for depth */}
@@ -32,22 +42,26 @@ const About = () => {
                 
                 <motion.div 
                     className="about-content"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={stagger}
                 >
-                    <div className="about-text glass-card" style={{ padding: '4rem', fontSize: '1.2rem', lineHeight: '1.8' }}>
+                    {/* Main About Text */}
+                    <motion.div variants={fadeUp} className="about-text glass-card" style={{ padding: '3rem 4rem', fontSize: '1.15rem', lineHeight: '1.9', marginBottom: '2rem' }}>
                         <p style={{ marginBottom: '1.5rem' }}>
-                            I am a passionate <strong>Full Stack Developer</strong> currently pursuing my Bachelor of Technology in Computer Science and Engineering at Lovely Professional University.
+                            I am a passionate <strong>Full Stack Developer</strong> currently pursuing my Bachelor of Technology in Computer Science and Engineering at <strong>Lovely Professional University</strong>. With a strong foundation in both frontend and backend technologies, I specialize in building scalable, production-ready web applications that deliver exceptional user experiences.
                         </p>
                         <p style={{ marginBottom: '1.5rem' }}>
-                            My journey in software development is driven by a desire to solve complex, real-world problems using modern technologies. Whether it's crafting an intuitive, responsive user interface or engineering a resilient, high-performance backend architecture, I bring dedication and a keen eye for detail to every project.
+                            My journey in software development is driven by a desire to solve complex, real-world problems using modern technologies. From crafting pixel-perfect, responsive user interfaces with <strong>React.js</strong> and <strong>Tailwind CSS</strong> to engineering resilient backend architectures with <strong>Node.js</strong> and <strong>MongoDB</strong>, I bring dedication and a keen eye for detail to every project I undertake.
+                        </p>
+                        <p style={{ marginBottom: '1.5rem' }}>
+                            I have hands-on experience developing full-stack applications including <strong>real-time communication platforms</strong> using WebRTC and Socket.io, <strong>e-commerce auction systems</strong>, and <strong>cultural preservation platforms</strong>. Each project has strengthened my ability to architect clean, maintainable codebases while adhering to industry best practices.
                         </p>
                         <p>
-                            I believe in lifelong learning and adaptability. Outside of writing code, you will find me participating in competitive programming, exploring cloud computing, or keeping up with the latest advancements in modern web frameworks.
+                            I believe in lifelong learning and staying at the forefront of technology. When I'm not writing code, you'll find me solving <strong>Data Structures & Algorithms</strong> problems, exploring <strong>cloud computing</strong> architectures, or contributing to open-source projects. I'm actively seeking opportunities to collaborate on impactful projects and grow as a software engineer.
                         </p>
-                    </div>
+                    </motion.div>
                 </motion.div>
             </div>
         </section>
