@@ -9,16 +9,16 @@ const Projects = () => {
             type: "Food Tech Platform",
             description: "A scalable full-stack food delivery platform that allows users to browse menus, place orders, and track deliveries in real time. Implemented secure authentication, efficient order management, and optimized database queries.",
             tech: ["React.js", "Redux", "Node.js", "Express.js", "MongoDB", "Socket.io"],
-            github: "https://github.com/Shubhams-here/Dabba-Drop",
+            github: "https://github.com/shubhams-here/Dabba-Drop",
             image: "/assets/dabba_drop.png"
         },
         {
             title: "Rriwaz",
             type: "E-Commerce Platform",
-            description: "A premium full-stack e-commerce platform specializing in authentic ethnic wear. It features a fluid user interface, seamless product browsing, secure cart management, and a highly responsive design tailored for an exceptional shopping experience.",
-            tech: ["React", "JavaScript", "Web Development"],
-            github: "https://github.com/Shubhams-here/Rriwaz",
-            demo: "https://Rriwaz.com",
+            description: "A premium full-stack e-commerce platform specializing in authentic ethnic wear. It features a fluid user interface, seamless product browsing, secure cart management, and a highly responsive backend tailored for an exceptional shopping experience.",
+            tech: ["React.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+            github: "https://github.com/shubhams-here/Rriwaz",
+            demo: "https://rriwaz.com",
             image: "/assets/Rriwaz.png"
         }
     ];

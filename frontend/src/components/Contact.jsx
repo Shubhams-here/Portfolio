@@ -15,10 +15,21 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('loading');
-        // Simulate sending delay then show success
-        await new Promise((resolve) => setTimeout(resolve, 1200));
-        setStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        try {
+            const response = await fetch('http://localhost:5000/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            if (response.ok) {
+                setStatus('success');
+                setFormData({ name: '', email: '', subject: '', message: '' });
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            setStatus('error');
+        }
         setTimeout(() => setStatus('idle'), 5000);
     };
 

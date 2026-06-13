@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const app = express();
@@ -10,6 +11,15 @@ app.use(cors());
 app.use(express.json());
 
 const Message = require('./models/Message');
+
+// Configure Nodemailer Transporter
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
 
 // Default route
 app.get('/', (req, res) => {
@@ -27,6 +37,30 @@ app.post('/api/contact', async (req, res) => {
 
         const newMessage = new Message({ name, email, subject, message });
         await newMessage.save();
+
+        // Send Email notification
+        if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+            const mailOptions = {
+                from: process.env.EMAIL_USER,
+                to: process.env.EMAIL_RECEIVER || 'shubhamsinghrajput7809@gmail.com',
+                subject: `Portfolio Contact: ${subject}`,
+                text: `You have received a new message from your portfolio contact form.\n\n` +
+                      `Name: ${name}\n` +
+                      `Email: ${email}\n` +
+                      `Subject: ${subject}\n\n` +
+                      `Message:\n${message}`
+            };
+
+            transporter.sendMail(mailOptions, (mailErr, info) => {
+                if (mailErr) {
+                    console.error('Nodemailer Error:', mailErr);
+                } else {
+                    console.log('Email sent successfully:', info.response);
+                }
+            });
+        } else {
+            console.warn('Nodemailer is not configured (EMAIL_USER/EMAIL_PASS missing). Skipping email send.');
+        }
 
         res.status(201).json({ success: true, message: 'Message sent successfully!' });
     } catch (error) {

@@ -198,7 +198,7 @@ img {
 
 .btn-outline:hover {
     background: var(--primary-color);
-    color: var(--bg-color);
+    color: #fff;
     transform: translateY(-3px);
 }
 
