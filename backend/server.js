@@ -19,35 +19,7 @@ process.on('unhandledRejection', (err) => {
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS configuration for development and production
-const allowedOrigins = [
-    'https://shubhambuilds.vercel.app',
-    'http://localhost:3000',
-    'http://localhost:5173',
-    'http://localhost:5000'
-];
-
-if (process.env.FRONTEND_URL) {
-    allowedOrigins.push(process.env.FRONTEND_URL);
-}
-
-app.use(cors({
-    origin: (origin, callback) => {
-        // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) return callback(null, true);
-        
-        const isAllowed = allowedOrigins.includes(origin) || 
-                          origin.startsWith('http://localhost:') || 
-                          origin.startsWith('http://127.0.0.1:');
-                          
-        if (isAllowed) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials: true
-}));
+app.use(cors({ origin: 'https://shubhambuilds.vercel.app', credentials: true }));
 
 app.use(express.json());
 
