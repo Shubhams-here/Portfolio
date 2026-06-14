@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 // Handle uncaught exceptions and unhandled promise rejections early
@@ -19,20 +18,37 @@ process.on('unhandledRejection', (err) => {
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({ origin: 'https://shubhambuilds.vercel.app', credentials: true }));
+// CORS configuration to allow local development and Vercel production
+const allowedOrigins = [
+    'https://shubhambuilds.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://localhost:5000'
+];
+
+app.use(cors({
+    origin: (origin, callback) => {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        
+        const isAllowed = allowedOrigins.includes(origin) || 
+                          origin.startsWith('http://localhost:') || 
+                          origin.startsWith('http://127.0.0.1:');
+                          
+        if (isAllowed) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
+}));
 
 app.use(express.json());
 
 // const Message = require('./models/Message');
 
-// Configure Nodemailer Transporter
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
+// Configure Resend API Transporter (using native fetch, no installation required)
 
 // Default route
 app.get('/', (req, res) => {
@@ -51,10 +67,10 @@ app.post('/api/contact', async (req, res) => {
         // const newMessage = new Message({ name, email, subject, message });
         // await newMessage.save();
 
-        // Send Email notification
-        if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-            const mailOptions = {
-                from: process.env.EMAIL_USER,
+        // Send Email notification via Resend API (HTTP, bypasses Render SMTP port blocks)
+        if (process.env.RESEND_API_KEY) {
+            const emailData = {
+                from: 'Portfolio Contact <onboarding@resend.dev>',
                 to: process.env.EMAIL_RECEIVER || 'shubhamsinghrajput7809@gmail.com',
                 subject: `Portfolio Contact: ${subject}`,
                 text: `You have received a new message from your portfolio contact form.\n\n` +
@@ -64,15 +80,28 @@ app.post('/api/contact', async (req, res) => {
                       `Message:\n${message}`
             };
 
-            transporter.sendMail(mailOptions, (mailErr, info) => {
-                if (mailErr) {
-                    console.error('Nodemailer Error:', mailErr);
+            fetch('https://api.resend.com/emails', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${process.env.RESEND_API_KEY}`
+                },
+                body: JSON.stringify(emailData)
+            })
+            .then(async (resendRes) => {
+                if (!resendRes.ok) {
+                    const errText = await resendRes.text();
+                    console.error('Resend API Error:', errText);
                 } else {
-                    console.log('Email sent successfully:', info.response);
+                    const resData = await resendRes.json();
+                    console.log('Email sent successfully via Resend:', resData.id);
                 }
+            })
+            .catch((fetchErr) => {
+                console.error('Fetch error calling Resend API:', fetchErr);
             });
         } else {
-            console.warn('Nodemailer is not configured (EMAIL_USER/EMAIL_PASS missing). Skipping email send.');
+            console.warn('Resend is not configured (RESEND_API_KEY missing). Skipping email send.');
         }
 
         res.status(201).json({ success: true, message: 'Message sent successfully!' });
