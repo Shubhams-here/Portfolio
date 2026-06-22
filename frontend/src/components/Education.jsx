@@ -107,7 +107,7 @@ const Education = () => {
 
                             <motion.div variants={fadeUp} className="cert-card glass-card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column' }} whileHover={{ y: -5 }}>
                                 <Trophy size={28} style={{ color: 'var(--primary-color)', marginBottom: '1rem' }} />
-                                <p style={{ fontWeight: 600 }}>One INDIA Event</p>
+                                <p style={{ fontWeight: 600 }}>One World Event</p>
                                 <span style={{ color: 'var(--accent-color)', fontSize: '0.9rem' }}>LPU</span>
                                 <div style={{ fontSize: '0.85rem', marginTop: '0.8rem', opacity: 0.8, flexGrow: 1 }}>Awarded for successful participation and exhibition in the annual cultural and technical event.</div>
                                 <a href="https://drive.google.com/file/d/1jy9HGE6N_42DGVzYaeUpEO_nKtJHyaCg/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '1rem', color: 'var(--primary-color)', fontSize: '0.9rem', textDecoration: 'none', fontWeight: 600 }}>View Certificate &rarr;</a>
